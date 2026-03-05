@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --color-steel-blue: #1E3A5F;
+  --color-industrial-dark: #1F2933;
+  --color-industrial-light: #2D3A47;
+  --color-metallic-silver: #C0C6CC;
+  --color-white: #FFFFFF;
+  --color-engineering-orange: #F97316;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Oswald', system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-industrial-dark text-metallic-silver font-sans antialiased overflow-x-hidden;
+    margin: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display tracking-tight text-white;
+  }
+}
+
+@layer utilities {
+  .clip-diagonal {
+    border-radius: 2px;
+  }
+}
