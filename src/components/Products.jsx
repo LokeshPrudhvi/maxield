@@ -4,35 +4,46 @@ import { ArrowUpRight, X, ChevronDown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const products = [
-    { name: "Journal Bearing Type 1", desc: "High-load capacity hydrodynamic bearing.", img: "/images/products/journal_bearing_1.png" },
-    { name: "Journal Bearing Type 2", desc: "Precision-engineered for high-speed shafts.", img: "/images/products/journal_bearing_2.png" },
-    { name: "Four Lobe Thrust Bearing", desc: "Enhanced stability for rotational equipment.", img: "/images/products/four_lobe_thrust.png" },
-    { name: "Single Side Thrust Bearing", desc: "Maximized unidirectional load handling.", img: "/images/products/single_side_thrust.png" },
-    { name: "Offset Bore Bearing", desc: "Customized clearance for thermal expansion.", img: "/images/products/offset_bore.png" },
-    { name: "Thin Wall Bearing", desc: "Compact dimensions with extreme durability.", img: "/images/products/thin_wall.png" },
-    { name: "Special Bearing", desc: "Application-specific bespoke engineering.", img: "/images/products/special_bearing.png" },
-    { name: "Oil Seal", desc: "Zero-leakage precision sealing solutions.", img: "/images/products/oil_seal.png" },
-    { name: "Inner Tilting Pad Bearing", desc: "Self-aligning pad configurations.", img: "/images/products/inner_tilting_pad.png" },
-    { name: "Thrust Pad Bearing", desc: "Optimal axial load distribution.", img: "/images/products/thrust_pad.png" },
-    { name: "Oil Inlet Fittings", desc: "Optimized fluid dynamics for lubrication.", img: "/images/products/oil_inlet_fittings.png" },
-    { name: "Oil Feed Connectors", desc: "Secure and continuous oil transmission.", img: "/images/products/oil_feed_connectors.png" }
+    { name: "Journal Bearing Type 1", category: "Journal Bearings", desc: "High-load capacity hydrodynamic bearing.", img: "/images/products/journal_bearing_1.png" },
+    { name: "Journal Bearing Type 2", category: "Journal Bearings", desc: "Precision-engineered for high-speed shafts.", img: "/images/products/journal_bearing_2.png" },
+    { name: "Four Lobe Thrust Bearing", category: "Thrust Bearings", desc: "Enhanced stability for rotational equipment.", img: "/images/products/four_lobe_thrust.png" },
+    { name: "Single Side Thrust Bearing", category: "Thrust Bearings", desc: "Maximized unidirectional load handling.", img: "/images/products/single_side_thrust.png" },
+    { name: "Offset Bore Bearing", category: "Specialty Bearings", desc: "Customized clearance for thermal expansion.", img: "/images/products/offset_bore.png" },
+    { name: "Thin Wall Bearing", category: "Specialty Bearings", desc: "Compact dimensions with extreme durability.", img: "/images/products/thin_wall.png" },
+    { name: "Special Bearing", category: "Specialty Bearings", desc: "Application-specific bespoke engineering.", img: "/images/products/special_bearing.png" },
+    { name: "Oil Seal", category: "Accessories", desc: "Zero-leakage precision sealing solutions.", img: "/images/products/oil_seal.png" },
+    { name: "Inner Tilting Pad Bearing", category: "Specialty Bearings", desc: "Self-aligning pad configurations.", img: "/images/products/inner_tilting_pad.png" },
+    { name: "Thrust Pad Bearing", category: "Thrust Bearings", desc: "Optimal axial load distribution.", img: "/images/products/thrust_pad.png" },
+    { name: "Oil Inlet Fittings", category: "Accessories", desc: "Optimized fluid dynamics for lubrication.", img: "/images/products/oil_inlet_fittings.png" },
+    { name: "Oil Feed Connectors", category: "Accessories", desc: "Secure and continuous oil transmission.", img: "/images/products/oil_feed_connectors.png" }
 ];
 
-const Products = () => {
+const categories = ["All", "Journal Bearings", "Thrust Bearings", "Specialty Bearings", "Accessories"];
+
+const Products = ({ isHomePage = false }) => {
     const ref = useRef(null);
     const sectionRef = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
     const [selectedProduct, setSelectedProduct] = useState(null);
+    const [activeCategory, setActiveCategory] = useState("All");
     const [isExpanded, setIsExpanded] = useState(false);
     const navigate = useNavigate();
 
-    const visibleProducts = isExpanded ? products : products.slice(0, 6);
+    const filteredProducts = isHomePage
+        ? products
+        : (activeCategory === "All"
+            ? products
+            : products.filter(p => p.category === activeCategory));
+
+    const visibleProducts = isHomePage
+        ? (isExpanded ? filteredProducts : filteredProducts.slice(0, 6))
+        : filteredProducts;
 
     const toggleExpanded = () => {
         if (isExpanded) {
             setIsExpanded(false);
             setTimeout(() => {
-                document.getElementById('quality')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.getElementById('products')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 50);
         } else {
             setIsExpanded(true);
@@ -70,63 +81,87 @@ const Products = () => {
                     </motion.div>
                 </div>
 
-                <div className="relative">
-                    <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {visibleProducts.map((product, index) => (
-                            <motion.div
-                                key={product.name}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                                transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
-                                className="group block"
+                {!isHomePage && (
+                    <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
+                        {categories.map((category) => (
+                            <button
+                                key={category}
+                                onClick={() => setActiveCategory(category)}
+                                className={`px-6 py-2 border text-xs font-bold uppercase tracking-widest transition-all duration-300 ${activeCategory === category
+                                    ? 'border-engineering-orange bg-engineering-orange text-white'
+                                    : 'border-white/20 text-white/60 hover:border-engineering-orange/50 hover:text-white'
+                                    }`}
                             >
-                                <div className="h-full bg-industrial-dark border border-white/5 group-hover:border-engineering-orange/50 transition-all duration-300 p-8 flex flex-col relative overflow-hidden group-hover:-translate-y-1">
-                                    <div className="w-full h-48 bg-[#1A232C]/50 relative mb-8 overflow-hidden flex items-center justify-center">
-                                        <img src={product.img} alt={product.name} className="object-cover h-full w-full opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
-                                    </div>
-
-                                    <div className="flex-grow z-10">
-                                        <h3 className="text-xl font-display font-semibold text-white mb-3 uppercase tracking-wider group-hover:text-engineering-orange transition-colors">{product.name}</h3>
-                                        <p className="text-sm text-metallic-silver mb-8 leading-relaxed">{product.desc}</p>
-                                    </div>
-
-                                    <div
-                                        className="mt-auto z-10 border-t border-white/5 pt-4 cursor-pointer"
-                                        onClick={() => setSelectedProduct(product)}
-                                    >
-                                        <div className="flex items-center text-xs uppercase tracking-widest font-bold text-white/30 group-hover:text-engineering-orange transition-colors">
-                                            View Specifications
-                                            <ArrowUpRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </motion.div>
+                                {category}
+                            </button>
                         ))}
                     </div>
+                )}
+
+                <div className="relative">
+                    <motion.div layout ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <AnimatePresence mode="popLayout">
+                            {visibleProducts.map((product, index) => (
+                                <motion.div
+                                    key={product.name}
+                                    layout
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.9 }}
+                                    transition={{ duration: 0.3 }}
+                                    className="group block"
+                                >
+                                    <div className="h-full bg-industrial-dark border border-white/5 group-hover:border-engineering-orange/50 transition-all duration-300 p-8 flex flex-col relative overflow-hidden group-hover:-translate-y-1">
+                                        <div className="w-full h-48 bg-[#1A232C]/50 relative mb-8 overflow-hidden flex items-center justify-center">
+                                            <img src={product.img} alt={product.name} className="object-cover h-full w-full opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
+                                        </div>
+
+                                        <div className="flex-grow z-10">
+                                            <h3 className="text-xl font-display font-semibold text-white mb-2 uppercase tracking-wider group-hover:text-engineering-orange transition-colors">{product.name}</h3>
+                                            <span className="inline-block px-2 py-1 mb-4 border border-white/10 text-[10px] text-white/50 uppercase tracking-widest bg-white/5">{product.category}</span>
+                                            <p className="text-sm text-metallic-silver mb-8 leading-relaxed">{product.desc}</p>
+                                        </div>
+
+                                        <div
+                                            className="mt-auto z-10 border-t border-white/5 pt-4 cursor-pointer"
+                                            onClick={() => setSelectedProduct(product)}
+                                        >
+                                            <div className="flex items-center text-xs uppercase tracking-widest font-bold text-white/30 group-hover:text-engineering-orange transition-colors">
+                                                View Specifications
+                                                <ArrowUpRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </AnimatePresence>
+                    </motion.div>
 
                     {/* Fade overlay when collapsed */}
-                    {!isExpanded && (
+                    {isHomePage && !isExpanded && (
                         <div className="absolute bottom-0 left-0 right-0 h-96 bg-gradient-to-t from-[#162032] via-[#162032]/70 to-transparent pointer-events-none z-20" />
                     )}
                 </div>
 
                 {/* Expand / Collapse button */}
-                <div className="flex justify-center mt-8">
-                    <button
-                        onClick={toggleExpanded}
-                        className="flex flex-col items-center gap-2 text-white/40 hover:text-engineering-orange transition-colors group"
-                    >
-                        <span className="text-sm uppercase tracking-widest font-mono">
-                            {isExpanded ? 'Show Less' : `Show All ${products.length} Products`}
-                        </span>
-                        <motion.div
-                            animate={{ rotate: isExpanded ? 180 : 0 }}
-                            transition={{ duration: 0.3 }}
+                {isHomePage && (
+                    <div className="flex justify-center mt-8">
+                        <button
+                            onClick={toggleExpanded}
+                            className="flex flex-col items-center gap-2 text-white/40 hover:text-engineering-orange transition-colors group"
                         >
-                            <ChevronDown className="w-4 h-4" />
-                        </motion.div>
-                    </button>
-                </div>
+                            <span className="text-sm uppercase tracking-widest font-mono">
+                                {isExpanded ? 'Show Less' : `Show All ${products.length} Products`}
+                            </span>
+                            <motion.div
+                                animate={{ rotate: isExpanded ? 180 : 0 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                <ChevronDown className="w-4 h-4" />
+                            </motion.div>
+                        </button>
+                    </div>
+                )}
             </div>
 
             <AnimatePresence>

@@ -12,7 +12,7 @@ const Home = () => {
         <>
             <Hero />
             <About />
-            <Products />
+            <Products isHomePage={true} />
             <Quality />
             <Trust />
             <Support />
