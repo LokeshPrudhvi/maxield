@@ -19,7 +19,7 @@ Please advise on manufacturing specifications, tolerances, and typical lead time
     }, [location]);
 
     return (
-        <section id="contact" className="py-24 bg-industrial-dark relative border-t border-white/5 bg-[url('/images/hero.png')] bg-cover bg-center bg-fixed bg-blend-overlay">
+        <section id="contact" className="py-24 bg-industrial-dark relative border-t border-white/5 bg-[url('/images/hero.jpg')] bg-cover bg-center bg-fixed bg-blend-overlay">
             <div className="absolute inset-0 bg-industrial-dark/95 backdrop-blur-md z-0"></div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

@@ -235,7 +235,7 @@ const Chatbot = () => {
                         </div>
 
                         {/* Messages Area */}
-                        <div className="flex-grow p-4 overflow-y-auto bg-[url('/images/hero.png')] bg-cover bg-center bg-blend-overlay bg-industrial-dark/95 flex flex-col gap-4 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+                        <div className="flex-grow p-4 overflow-y-auto bg-[url('/images/hero.jpg')] bg-cover bg-center bg-blend-overlay bg-industrial-dark/95 flex flex-col gap-4 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
                             {messages.map((msg, idx) => (
                                 <motion.div
                                     key={idx}

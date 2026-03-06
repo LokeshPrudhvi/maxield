@@ -8,7 +8,7 @@ const Hero = () => {
         <section className="relative h-screen flex items-center justify-center overflow-hidden bg-industrial-dark">
             {/* Extremely clean background, no neon glows */}
             <div className="absolute inset-0 z-0 bg-industrial-dark">
-                <img src="/images/hero.png" alt="Industrial Manufacturing Background" className="w-full h-full object-cover opacity-10 mix-blend-luminosity grayscale" />
+                <img src="/images/hero.jpg" alt="Industrial Manufacturing Background" className="w-full h-full object-cover opacity-10 mix-blend-luminosity grayscale" />
                 <div className="absolute inset-0 bg-gradient-to-t from-industrial-dark via-industrial-dark/95 to-industrial-dark/70"></div>
 
                 {/* 3D Scroll-animated Bearing Model */}

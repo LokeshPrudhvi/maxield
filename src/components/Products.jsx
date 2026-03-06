@@ -4,18 +4,18 @@ import { ArrowUpRight, X, ChevronDown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const products = [
-    { name: "Journal Bearing Type 1", category: "Journal Bearings", desc: "High-load capacity hydrodynamic bearing.", img: "/images/products/journal_bearing_1.png" },
-    { name: "Journal Bearing Type 2", category: "Journal Bearings", desc: "Precision-engineered for high-speed shafts.", img: "/images/products/journal_bearing_2.png" },
-    { name: "Four Lobe Thrust Bearing", category: "Thrust Bearings", desc: "Enhanced stability for rotational equipment.", img: "/images/products/four_lobe_thrust.png" },
-    { name: "Single Side Thrust Bearing", category: "Thrust Bearings", desc: "Maximized unidirectional load handling.", img: "/images/products/single_side_thrust.png" },
-    { name: "Offset Bore Bearing", category: "Specialty Bearings", desc: "Customized clearance for thermal expansion.", img: "/images/products/offset_bore.png" },
-    { name: "Thin Wall Bearing", category: "Specialty Bearings", desc: "Compact dimensions with extreme durability.", img: "/images/products/thin_wall.png" },
-    { name: "Special Bearing", category: "Specialty Bearings", desc: "Application-specific bespoke engineering.", img: "/images/products/special_bearing.png" },
-    { name: "Oil Seal", category: "Accessories", desc: "Zero-leakage precision sealing solutions.", img: "/images/products/oil_seal.png" },
-    { name: "Inner Tilting Pad Bearing", category: "Specialty Bearings", desc: "Self-aligning pad configurations.", img: "/images/products/inner_tilting_pad.png" },
-    { name: "Thrust Pad Bearing", category: "Thrust Bearings", desc: "Optimal axial load distribution.", img: "/images/products/thrust_pad.png" },
-    { name: "Oil Inlet Fittings", category: "Accessories", desc: "Optimized fluid dynamics for lubrication.", img: "/images/products/oil_inlet_fittings.png" },
-    { name: "Oil Feed Connectors", category: "Accessories", desc: "Secure and continuous oil transmission.", img: "/images/products/oil_feed_connectors.png" }
+    { name: "Journal Bearing Type 1", category: "Journal Bearings", desc: "High-load capacity hydrodynamic bearing.", img: "/images/products/journal_bearing_1.jpg" },
+    { name: "Journal Bearing Type 2", category: "Journal Bearings", desc: "Precision-engineered for high-speed shafts.", img: "/images/products/journal_bearing_2.jpg" },
+    { name: "Four Lobe Thrust Bearing", category: "Thrust Bearings", desc: "Enhanced stability for rotational equipment.", img: "/images/products/four_lobe_thrust.jpg" },
+    { name: "Single Side Thrust Bearing", category: "Thrust Bearings", desc: "Maximized unidirectional load handling.", img: "/images/products/single_side_thrust.jpg" },
+    { name: "Offset Bore Bearing", category: "Specialty Bearings", desc: "Customized clearance for thermal expansion.", img: "/images/products/offset_bore.jpg" },
+    { name: "Thin Wall Bearing", category: "Specialty Bearings", desc: "Compact dimensions with extreme durability.", img: "/images/products/thin_wall.jpg" },
+    { name: "Special Bearing", category: "Specialty Bearings", desc: "Application-specific bespoke engineering.", img: "/images/products/special_bearing.jpg" },
+    { name: "Oil Seal", category: "Accessories", desc: "Zero-leakage precision sealing solutions.", img: "/images/products/oil_seal.jpg" },
+    { name: "Inner Tilting Pad Bearing", category: "Specialty Bearings", desc: "Self-aligning pad configurations.", img: "/images/products/inner_tilting_pad.jpg" },
+    { name: "Thrust Pad Bearing", category: "Thrust Bearings", desc: "Optimal axial load distribution.", img: "/images/products/thrust_pad.jpg" },
+    { name: "Oil Inlet Fittings", category: "Accessories", desc: "Optimized fluid dynamics for lubrication.", img: "/images/products/oil_inlet_fittings.jpg" },
+    { name: "Oil Feed Connectors", category: "Accessories", desc: "Secure and continuous oil transmission.", img: "/images/products/oil_feed_connectors.jpg" }
 ];
 
 const categories = ["All", "Journal Bearings", "Thrust Bearings", "Specialty Bearings", "Accessories"];

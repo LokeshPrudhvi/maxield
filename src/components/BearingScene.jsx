@@ -1,9 +1,9 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment, Float, ContactShadows } from '@react-three/drei';
 import * as THREE from 'three';
 
-const HollowCylinder = ({ innerRadius, outerRadius, depth, color, metalness, roughness, segments = 64, ...props }) => {
+const HollowCylinder = ({ innerRadius, outerRadius, depth, color, metalness, roughness, segments = 48, ...props }) => {
     const shape = useMemo(() => {
         const s = new THREE.Shape();
         s.absarc(0, 0, outerRadius, 0, Math.PI * 2, false);
@@ -51,9 +51,16 @@ const Bolts = () => {
 
 const BearingAssembly = () => {
     const groupRef = useRef();
+    const scrollYRef = useRef(0);
+
+    useEffect(() => {
+        const onScroll = () => { scrollYRef.current = window.scrollY; };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
 
     useFrame((state, delta) => {
-        const scrollY = window.scrollY;
+        const scrollY = scrollYRef.current;
         // Effect over the first 800px of scroll
         const progress = Math.min(scrollY / 800, 1);
 
@@ -109,7 +116,7 @@ const BearingAssembly = () => {
 const BearingScene = () => {
     return (
         <div className="absolute inset-0 z-0 pointer-events-none w-full h-full xl:ml-32">
-            <Canvas camera={{ position: [0, 0, 8], fov: 45 }} gl={{ antialias: true, alpha: true }}>
+            <Canvas camera={{ position: [0, 0, 8], fov: 45 }} gl={{ antialias: true, alpha: true }} dpr={[1, 1.5]}>
                 <ambientLight intensity={0.4} />
                 <directionalLight position={[10, 10, 10]} intensity={1.5} color="#FFFFFF" />
                 <directionalLight position={[-10, 5, -10]} intensity={0.8} color="#F97316" />
@@ -118,7 +125,7 @@ const BearingScene = () => {
                 <Environment preset="studio" />
                 <BearingAssembly />
 
-                <ContactShadows resolution={1024} scale={30} blur={2.5} opacity={0.6} far={15} color="#000000" position={[0, -5, 0]} />
+                <ContactShadows resolution={256} scale={30} blur={2.5} opacity={0.6} far={15} color="#000000" position={[0, -5, 0]} />
             </Canvas>
         </div>
     );

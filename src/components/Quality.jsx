@@ -39,7 +39,7 @@ const Quality = () => {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="w-full h-full relative border border-white/5">
-                            <img src="/images/quality.png" alt="Engineering Quality Testing" className="w-full h-full object-cover grayscale mix-blend-luminosity opacity-70" />
+                            <img src="/images/quality.jpg" alt="Engineering Quality Testing" className="w-full h-full object-cover grayscale mix-blend-luminosity opacity-70" />
                             <div className="absolute top-4 left-4 border border-steel-blue/40 bg-industrial-dark/90 p-3 flex flex-col gap-2">
                                 <div className="h-1 w-12 bg-engineering-orange"></div>
                                 <span className="text-white text-xs font-mono uppercase tracking-widest">Diag. 01A</span>

@@ -45,7 +45,7 @@ const Trust = () => {
     const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
 
     return (
-        <section className="py-24 bg-industrial-dark relative border-y border-white/5 bg-[url('/images/hero.png')] bg-cover bg-center bg-fixed bg-blend-overlay">
+        <section className="py-24 bg-industrial-dark relative border-y border-white/5 bg-[url('/images/hero.jpg')] bg-cover bg-center bg-fixed bg-blend-overlay">
             <div className="absolute inset-0 bg-industrial-dark/90 backdrop-blur-sm z-0"></div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

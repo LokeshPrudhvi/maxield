@@ -4,7 +4,7 @@ import Contact from '../components/Contact';
 const ContactUs = () => {
     return (
         <>
-            <PageHeader title="Get In Touch" bgImage="/images/hero.png" />
+            <PageHeader title="Get In Touch" bgImage="/images/hero.jpg" />
             <Contact />
         </>
     );

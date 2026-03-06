@@ -5,7 +5,7 @@ import { ShieldCheck, Target, Crosshair } from 'lucide-react';
 const AboutUs = () => {
     return (
         <>
-            <PageHeader title="Company Overview" bgImage="/images/hero.png" />
+            <PageHeader title="Company Overview" bgImage="/images/hero.jpg" />
 
             {/* Expanded Vision Mission section */}
             <section className="py-24 bg-[#151C23] border-b border-white/5 relative">

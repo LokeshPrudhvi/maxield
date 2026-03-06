@@ -2,12 +2,12 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 
 const industries = [
-    { name: "Marine Industry", img: "/images/industries/marine_industry_1772683639395.png" },
-    { name: "Gearboxes", img: "/images/industries/gearboxes_1772683657291.png" },
-    { name: "Industrial Pumps", img: "/images/industries/industrial_pumps_1772683672498.png" },
-    { name: "Gas & Steam Turbines", img: "/images/industries/gas_turbines_1772683692371.png" },
-    { name: "Cement Industry", img: "/images/industries/cement_industry_1772683709446.png" },
-    { name: "Steel Industry", img: "/images/industries/steel_industry_1772683728857.png" }
+    { name: "Marine Industry", img: "/images/industries/marine_industry_1772683639395.jpg" },
+    { name: "Gearboxes", img: "/images/industries/gearboxes_1772683657291.jpg" },
+    { name: "Industrial Pumps", img: "/images/industries/industrial_pumps_1772683672498.jpg" },
+    { name: "Gas & Steam Turbines", img: "/images/industries/gas_turbines_1772683692371.jpg" },
+    { name: "Cement Industry", img: "/images/industries/cement_industry_1772683709446.jpg" },
+    { name: "Steel Industry", img: "/images/industries/steel_industry_1772683728857.jpg" }
 ];
 
 const Industries = () => {

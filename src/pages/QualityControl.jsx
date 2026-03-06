@@ -4,7 +4,7 @@ import Quality from '../components/Quality';
 const QualityControl = () => {
     return (
         <>
-            <PageHeader title="Testing & Certifications" bgImage="/images/quality.png" />
+            <PageHeader title="Testing & Certifications" bgImage="/images/quality.jpg" />
 
             <div className="py-20 bg-gradient-to-b from-[#151C23] to-[#0F141A] border-b border-white/5">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
