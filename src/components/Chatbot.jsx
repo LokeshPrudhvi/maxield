@@ -119,14 +119,8 @@ const Chatbot = () => {
     const [isTyping, setIsTyping] = useState(false);
     const messagesEndRef = useRef(null);
     const historyRef = useRef([
-        {
-            role: "user",
-            parts: [{ text: SYSTEM_PROMPT + "\n\nAcknowledge you understand and are ready to help as a conversational sales consultant." }]
-        },
-        {
-            role: "model",
-            parts: [{ text: WELCOME_MESSAGE }]
-        },
+        { role: "user", parts: [{ text: "Hi" }] },
+        { role: "model", parts: [{ text: WELCOME_MESSAGE }] },
     ]);
 
     const scrollToBottom = () => {
@@ -159,6 +153,7 @@ const Chatbot = () => {
         try {
             const model = genAI.getGenerativeModel({
                 model: "gemini-2.0-flash",
+                systemInstruction: SYSTEM_PROMPT,
             });
             const result = await model.generateContent({
                 contents: historyRef.current,
